@@ -1,5 +1,7 @@
+
 //import libraries
 import gifAnimation.*;
+import themidibus.*;
 
 //PImages Arrays to store gifs
 PImage[] lil;
@@ -13,6 +15,10 @@ Gif kendrickGif;
 boolean lilShow = false;
 boolean kendrickShow = false;
 
+//MidiBus instance
+MidiBus midiBus;
+
+
 void setup() {
 
   size(600, 600);
@@ -24,6 +30,14 @@ void setup() {
   // make them loop
   lilGif.loop();
   kendrickGif.loop();
+
+  //list Midibus devices
+  MidiBus.list();
+
+  //create midiBus link
+  //first number is input, second number is output
+  //midiBus = new MidiBus(this, 1, 1);
+  midiBus = new MidiBus(this, "python-midi", -1);
 }
 
 void draw() {
@@ -37,19 +51,25 @@ void draw() {
   if (kendrickShow) {
     image(kendrickGif, 0, 0);
   }
-
 }
 
 void keyPressed() {
   if (key == '1') {
     lilShow = true;
     kendrickShow = false;
-  }
-  else if(key == '2') {
+  } else if (key == '2') {
     lilShow = false;
     kendrickShow = true;
   } else {
     lilShow = false;
     kendrickShow = false;
   }
+}
+
+
+//receive a note on
+void noteOn(Note note) {
+  println("channel: " + note.channel());
+  println("pitch: " + note.pitch());
+  println("velocity: " + note.velocity());
 }

@@ -39,17 +39,20 @@ while True:
     lineLil = textLil[counter]
     lineKendrick = textKendrick[counter]
 
-    # say lil wayne lyric
-    os.system("say " + voiceLil + lineLil)
-    time.sleep(1.0)
     # send lil wayne midi message
     midiOut.send_message(midiLil);
-
-    # say kendrick laamr lyric
-    os.system("say " + voiceKendrick + lineKendrick)
+    # say lil wayne lyric
+    os.system("say " + voiceLil + lineLil)
+    # wait
     time.sleep(1.0)
+
     # send kendrick lamar midi message
     midiOut.send_message(midiKendrick);
+    # say kendrick laamr lyric
+    os.system("say " + voiceKendrick + lineKendrick)
+    # wait
+    time.sleep(1.0)
+
 
     # update counter
     counter = counter + 1

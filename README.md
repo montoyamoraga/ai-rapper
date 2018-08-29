@@ -23,3 +23,21 @@ pip3 install rtmidi
 ```
 
 since you are in a python3 environment pip and pip3 mean the same, but its good to be explicit
+
+```bash
+git merge upstream/master
+```
+
+pull from master repo
+
+```bash
+git push
+```
+
+push to cloud repo
+
+
+
+
+
+

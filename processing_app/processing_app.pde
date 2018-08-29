@@ -72,4 +72,14 @@ void noteOn(Note note) {
   println("channel: " + note.channel());
   println("pitch: " + note.pitch());
   println("velocity: " + note.velocity());
+
+  int currentNote = note.pitch();
+
+  if (currentNote == 60) {
+    lilShow = true;
+    kendrickShow = false;
+  } else if (currentNote == 61) {
+    lilShow = false;
+    kendrickShow = true;
+  }
 }

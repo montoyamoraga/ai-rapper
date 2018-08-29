@@ -1,61 +1,56 @@
 # import libraries
-import mido
+# time for delays
 import time
-import rtmidi
+# os for sending commands to bash terminal
 import os
+# midi library
+# pip3 install mido
+import mido
+# midi library
+# pip3 install python-rtmidi
+import rtmidi
 
-# fileLil = open("lil-wayne.txt", "r")
-# linesLil = fileLil.read().split("\n")
-
-# content = open("lil-wayne.txt").readlines()
-
+# read .txt files and strip new line characters
 textLil = [line.rstrip("\n") for line in open('lil-wayne.txt')]
-
 textKendrick = [line.rstrip("\n") for line in open('kendrick-lamar.txt')]
 
-voiceLil = " -v Alex "
-voiceKendrick = " -v Fred "
+# pick voices and rate for terminal
+voiceLil = " -v Alex -r 200 "
+voiceKendrick = " -v Fred -r 200 "
 
-minLength = min(len(textKendrick), len(textLil))
+# calculate the length of shortest
+lengthShortest = min(len(textKendrick), len(textLil))
 
+# init counter
 counter = 0
 
-while True:
-    lineLil = textLil[counter]
-    os.system("say " + voiceLil + lineLil)
-    time.sleep(1.0)
-
-    lineKendrick = textKendrick[counter]
-    os.system("say " + voiceKendrick + lineKendrick)
-    time.sleep(1.0)
-
-    counter = counter + 1
-    counter = counter % minLength
-
-
-
-# for line in ltextLil:
-#     os.system("say " + line)
-#     time.sleep(1.0)
-
-# print(textLil)
-#
-# with open("lil-wayne.txt") as f:
-#     lines = f.readlines()
-
-
-# print(content)
-
-# os.system("say 'hi moises 404'")
-
+# create midi output
 midiOut = rtmidi.MidiOut()
-
+# create midi virtual port and make it output port
 outPort = midiOut.open_virtual_port("python-midi")
 
-outPorts = mido.get_output_names()
+# create messages for showing different
+midiLil = [0x90, 60, 112];
+midiKendrick = [0x90, 61, 112];
 
-noteOn = [0x90, 60, 112];
-
+# infinite loop
 while True:
-    midiOut.send_message(noteOn);
+    # get next lyrics
+    lineLil = textLil[counter]
+    lineKendrick = textKendrick[counter]
+
+    # say lil wayne lyric
+    os.system("say " + voiceLil + lineLil)
     time.sleep(1.0)
+    # send lil wayne midi message
+    midiOut.send_message(midiLil);
+
+    # say kendrick laamr lyric
+    os.system("say " + voiceKendrick + lineKendrick)
+    time.sleep(1.0)
+    # send kendrick lamar midi message
+    midiOut.send_message(midiKendrick);
+
+    # update counter
+    counter = counter + 1
+    counter = counter % lengthShortest

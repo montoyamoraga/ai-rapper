@@ -15,9 +15,8 @@ Gif kendrickGif;
 boolean lilShow = false;
 boolean kendrickShow = false;
 
-//MidiBus instance
+//MidiBus instances
 MidiBus midiBus;
-
 
 void setup() {
 

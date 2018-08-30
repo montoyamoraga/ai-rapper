@@ -24,14 +24,26 @@ lengthShortest = min(len(textKendrick), len(textLil))
 # init counter
 counter = 0
 
-# create midi output
-midiOut = rtmidi.MidiOut()
-# create midi virtual port and make it output port
-outPort = midiOut.open_virtual_port("python-midi")
+# create midi outputs
+midiProcessing = rtmidi.MidiOut()
+midiVocoder = rtmidi.MidiOut()
+# create midi virtual ports
+outProcessing = midiProcessing.open_virtual_port("python-midi")
+outVocoder = midiVocoder.open_port("VP-03")
 
 # create messages for showing different
+# 0x90 means 144 in decimal
+# 144 is note on channel 1
 midiLil = [0x90, 60, 112];
 midiKendrick = [0x90, 61, 112];
+
+# midi cc control of tune in roland vp-03 vocoder
+tuneCC = 79
+tuneLil = 0
+tuneKendrick = 127
+ccLil = [0xb0, 79, 0]
+ccKendrick = [0xb0, 79, 127]
+
 
 # infinite loop
 while True:
@@ -39,16 +51,23 @@ while True:
     lineLil = textLil[counter]
     lineKendrick = textKendrick[counter]
 
+    # change tune via midi cc
+    midiVocoder.send_message(ccLil)
+    time.sleep(0.1)
     # send lil wayne midi message
-    midiOut.send_message(midiLil);
+    midiProcessing.send_message(midiLil);
     # say lil wayne lyric
     os.system("say " + voiceLil + lineLil)
     # wait
     time.sleep(1.0)
 
+    # change tune via midi cc
+    midiOut.send_message(ccKendrick)
+    midiVocoder.send_message(ccWayne)
+    time.sleep(0.1)
     # send kendrick lamar midi message
     midiOut.send_message(midiKendrick);
-    # say kendrick laamr lyric
+    # say kendrick lamar lyric
     os.system("say " + voiceKendrick + lineKendrick)
     # wait
     time.sleep(1.0)

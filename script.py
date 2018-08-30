@@ -27,9 +27,15 @@ counter = 0
 # create midi outputs
 midiProcessing = rtmidi.MidiOut()
 midiVocoder = rtmidi.MidiOut()
-# create midi virtual ports
+
+# check available ports to pick vocoder
+available_ports = midiProcessing.get_ports()
+print(available_ports)
+vocoderIndex = 0
+
 outProcessing = midiProcessing.open_virtual_port("python-midi")
-outVocoder = midiVocoder.open_port("VP-03")
+
+outVocoder = midiVocoder.open_port(vocoderIndex)
 
 # create messages for showing different
 # 0x90 means 144 in decimal
@@ -62,11 +68,10 @@ while True:
     time.sleep(1.0)
 
     # change tune via midi cc
-    midiOut.send_message(ccKendrick)
-    midiVocoder.send_message(ccWayne)
+    midiVocoder.send_message(ccKendrick)
     time.sleep(0.1)
     # send kendrick lamar midi message
-    midiOut.send_message(midiKendrick);
+    midiProcessing.send_message(midiKendrick);
     # say kendrick lamar lyric
     os.system("say " + voiceKendrick + lineKendrick)
     # wait

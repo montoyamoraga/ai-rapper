@@ -55,8 +55,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 421.0, 251.0, 124.0, 33.0 ],
-					"presentation_rect" : [ 421.0, 251.0, 0.0, 0.0 ],
+					"patching_rect" : [ 402.0, 188.0, 124.0, 33.0 ],
 					"style" : "",
 					"text" : "make terminal output to loopback audio"
 				}
@@ -69,7 +68,7 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 421.0, 304.0, 124.0, 47.0 ],
+					"patching_rect" : [ 338.0, 308.0, 124.0, 47.0 ],
 					"style" : "",
 					"text" : "double click to pick\ninput loopback audio\noutput VP-03"
 				}
@@ -79,11 +78,11 @@
 				"box" : 				{
 					"id" : "obj-2",
 					"maxclass" : "newobj",
-					"numinlets" : 6,
+					"numinlets" : 2,
 					"numoutlets" : 0,
-					"patching_rect" : [ 276.0, 304.0, 143.0, 22.0 ],
+					"patching_rect" : [ 276.0, 304.0, 57.0, 22.0 ],
 					"style" : "",
-					"text" : "dac~ 1 2 3 4 5 6"
+					"text" : "dac~ 3 4"
 				}
 
 			}
@@ -103,7 +102,24 @@
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
+					"destination" : [ "obj-2", 1 ],
+					"order" : 0,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-2", 0 ],
+					"order" : 2,
+					"source" : [ "obj-1", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
 					"destination" : [ "obj-9", 0 ],
+					"order" : 1,
 					"source" : [ "obj-1", 0 ]
 				}
 

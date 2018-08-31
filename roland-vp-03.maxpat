@@ -9,7 +9,7 @@
 			"modernui" : 1
 		}
 ,
-		"rect" : [ 86.0, 104.0, 640.0, 480.0 ],
+		"rect" : [ 684.0, 163.0, 640.0, 480.0 ],
 		"bglocked" : 0,
 		"openinpresentation" : 0,
 		"default_fontsize" : 12.0,
@@ -38,26 +38,106 @@
 		"subpatcher_template" : "",
 		"boxes" : [ 			{
 				"box" : 				{
-					"id" : "obj-9",
-					"maxclass" : "meter~",
+					"id" : "obj-17",
+					"maxclass" : "comment",
 					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "float" ],
-					"patching_rect" : [ 312.0, 198.0, 80.0, 13.0 ],
+					"numoutlets" : 0,
+					"patching_rect" : [ 287.0, 63.5, 204.0, 20.0 ],
+					"presentation_rect" : [ 262.0, 3.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "make iterm output to loopback audio"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-16",
+					"linecount" : 2,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 329.5, 222.5, 119.0, 33.0 ],
+					"presentation_rect" : [ 473.0, 103.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "connect headpones\nto vocoder"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-13",
+					"linecount" : 7,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 432.0, 105.5, 97.0, 100.0 ],
+					"presentation_rect" : [ 366.0, 105.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "max settings\n\ninput\nloopback audio\n\noutput\nvp-03"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-9",
+					"linecount" : 7,
+					"maxclass" : "comment",
+					"numinlets" : 1,
+					"numoutlets" : 0,
+					"patching_rect" : [ 261.0, 105.5, 97.0, 100.0 ],
+					"presentation_rect" : [ 255.0, 122.5, 0.0, 0.0 ],
+					"style" : "",
+					"text" : "system settings\n\ninput\nvp-03\n\noutput\nloopback audio"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-6",
+					"maxclass" : "gain~",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "int" ],
+					"parameter_enable" : 0,
+					"patching_rect" : [ 94.5, 131.0, 22.0, 140.0 ],
 					"style" : ""
 				}
 
 			}
 , 			{
 				"box" : 				{
-					"id" : "obj-8",
-					"linecount" : 2,
-					"maxclass" : "comment",
+					"id" : "obj-5",
+					"maxclass" : "meter~",
 					"numinlets" : 1,
-					"numoutlets" : 0,
-					"patching_rect" : [ 402.0, 188.0, 124.0, 33.0 ],
+					"numoutlets" : 1,
+					"outlettype" : [ "float" ],
+					"patching_rect" : [ 148.0, 137.0, 80.0, 13.0 ],
+					"style" : ""
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-12",
+					"maxclass" : "newobj",
+					"numinlets" : 1,
+					"numoutlets" : 2,
+					"outlettype" : [ "signal", "signal" ],
+					"patching_rect" : [ 25.0, 78.0, 57.0, 22.0 ],
 					"style" : "",
-					"text" : "make terminal output to loopback audio"
+					"text" : "adc~ 1 2"
+				}
+
+			}
+, 			{
+				"box" : 				{
+					"id" : "obj-10",
+					"maxclass" : "newobj",
+					"numinlets" : 2,
+					"numoutlets" : 0,
+					"patching_rect" : [ 57.0, 339.0, 57.0, 22.0 ],
+					"style" : "",
+					"text" : "dac~ 3 4"
 				}
 
 			}
@@ -68,59 +148,33 @@
 					"maxclass" : "comment",
 					"numinlets" : 1,
 					"numoutlets" : 0,
-					"patching_rect" : [ 338.0, 308.0, 124.0, 47.0 ],
+					"patching_rect" : [ 116.0, 314.0, 124.0, 47.0 ],
 					"style" : "",
 					"text" : "double click to pick\ninput loopback audio\noutput VP-03"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-2",
-					"maxclass" : "newobj",
-					"numinlets" : 2,
-					"numoutlets" : 0,
-					"patching_rect" : [ 276.0, 304.0, 57.0, 22.0 ],
-					"style" : "",
-					"text" : "dac~ 3 4"
-				}
-
-			}
-, 			{
-				"box" : 				{
-					"id" : "obj-1",
-					"maxclass" : "newobj",
-					"numinlets" : 1,
-					"numoutlets" : 1,
-					"outlettype" : [ "signal" ],
-					"patching_rect" : [ 286.0, 150.0, 47.0, 22.0 ],
-					"style" : "",
-					"text" : "adc~ 1"
 				}
 
 			}
  ],
 		"lines" : [ 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 1 ],
+					"destination" : [ "obj-6", 0 ],
+					"source" : [ "obj-12", 0 ]
+				}
+
+			}
+, 			{
+				"patchline" : 				{
+					"destination" : [ "obj-10", 1 ],
 					"order" : 0,
-					"source" : [ "obj-1", 0 ]
+					"source" : [ "obj-6", 0 ]
 				}
 
 			}
 , 			{
 				"patchline" : 				{
-					"destination" : [ "obj-2", 0 ],
-					"order" : 2,
-					"source" : [ "obj-1", 0 ]
-				}
-
-			}
-, 			{
-				"patchline" : 				{
-					"destination" : [ "obj-9", 0 ],
+					"destination" : [ "obj-10", 0 ],
 					"order" : 1,
-					"source" : [ "obj-1", 0 ]
+					"source" : [ "obj-6", 0 ]
 				}
 
 			}

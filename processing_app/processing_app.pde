@@ -20,7 +20,7 @@ MidiBus midiBus;
 
 void setup() {
 
-  size(600, 600);
+  size(480, 263);
 
   // load gifs from data folder
   lilGif = new Gif(this, "./data/lil_wayne.gif");

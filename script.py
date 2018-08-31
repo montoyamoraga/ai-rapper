@@ -50,6 +50,8 @@ tuneKendrick = 127
 ccLil = [0xb0, 79, 0]
 ccKendrick = [0xb0, 79, 127]
 
+os.system("clear")
+
 
 # infinite loop
 while True:
@@ -63,7 +65,9 @@ while True:
     # send lil wayne midi message
     midiProcessing.send_message(midiLil);
     # say lil wayne lyric
-    os.system("say " + voiceLil + lineLil)
+    os.system("clear")
+    print("[Lil Wayne]: " + lineLil)
+    os.system("say " + voiceLil + "\"" + str(lineLil) + "\"")
     # wait
     time.sleep(1.0)
 
@@ -73,7 +77,9 @@ while True:
     # send kendrick lamar midi message
     midiProcessing.send_message(midiKendrick);
     # say kendrick lamar lyric
-    os.system("say " + voiceKendrick + lineKendrick)
+    os.system("clear")
+    print("[Kendrick Lamar]: " + lineKendrick)
+    os.system("say " + voiceKendrick + "\"" + str(lineKendrick) + "\"")
     # wait
     time.sleep(1.0)
 
